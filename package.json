@@ -1,0 +1,25 @@
+{
+  "name": "root-ui",
+  "version": "1.0.6",
+  "license": "MIT",
+  "author": {
+    "name": "grappphy",
+    "email": "grappphy@gmail.com",
+    "url": "http://root-ui.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grappphy/root-ui.git"
+  },
+  "keywords": [
+    "css",
+    "sass",
+    "bootstrap",
+    "web",
+    "ui",
+    "smacss",
+    "oocss",
+    "bem"
+  ],
+  "main": "/index.html"
+}
