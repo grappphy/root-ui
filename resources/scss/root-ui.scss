@@ -1,5 +1,18 @@
 @charset "utf-8";
 
+/*!
+  * ROOT UI v1.0.6 (http://root-ui.com)
+  * Copyright 2020 grappphy <grappphy@gmail.com>
+  * Licensed under MIT (https://github.com/grappphy/root-ui/LICENSE)
+*/
+
+/*!
+ * Bootstrap v4.4.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
 //functions
 @import "functions/bootstrap";
 @import "functions/map";
@@ -17,8 +30,6 @@
 @import "mixins/opacity";
 @import "mixins/vendor-prefix";
 @import "mixins/viewport";
-
-/*! ROOT UI v#{$version} | MIT License | https://github.com/grappphy/root-ui */
 
 //common
 @import "common/normalize";
