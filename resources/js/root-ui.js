@@ -1,7 +1,7 @@
 "use strict";
 
 function RootUI() {
-  this.version = '1.0.7';
+  this.version = '1.0.8';
 }
  /* ROOT UI JS는 시맨틱 UI의 문법과 일부 코드를 사용하여 제작되었습니다. */
 

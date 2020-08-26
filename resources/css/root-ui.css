@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*!
-  * ROOT UI v1.0.6 (http://root-ui.com)
+  * ROOT UI v1.0.8 (http://root-ui.com)
   * Copyright 2020 grappphy <grappphy@gmail.com>
   * Licensed under MIT (https://github.com/grappphy/root-ui/LICENSE)
 */
@@ -1324,7 +1324,7 @@ a.btn {
 
 .select.is-active .pseudo-list {
   display: block;
-  z-index: 890;
+  z-index: 1000;
 }
 
 .select.is-upward .pseudo-list {
@@ -1826,6 +1826,82 @@ a.btn {
 
 .circular-list-inner-item img {
   width: 30px;
+}
+
+.nav {
+  position: relative;
+  z-index: 1030;
+}
+
+.nav .nav-depth-1,
+.nav .nav-item {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.nav .nav-depth-1 {
+  white-space: nowrap;
+}
+
+.nav .nav-depth-1 > .nav-item + .nav-item {
+  margin-left: 3rem;
+}
+
+.nav .nav-depth-1 > .nav-item > .nav-link {
+  padding: 1rem;
+}
+
+.nav .nav-depth-1 [class*=nav-depth-] {
+  position: absolute;
+  visibility: hidden;
+  background-color: #fff;
+}
+
+.nav .nav-depth-1 [class*=nav-depth-] > .nav-item {
+  display: block;
+  padding: 0.5rem 1rem;
+}
+
+.nav .nav-depth-2 .nav-link {
+  padding: 0.5rem 1rem;
+}
+
+.nav .nav-depth-2 [class*=nav-depth-] {
+  top: 0;
+  left: 100%;
+}
+
+.nav .nav-item:hover > [class*=nav-depth-],
+.nav [class*=nav-depth-]:hover {
+  visibility: visible;
+}
+
+.nav .nav-item {
+  position: relative;
+}
+
+.nav .nav-link {
+  display: block;
+}
+
+.nav.nav-vertical .nav-brand,
+.nav.nav-vertical .nav-depth-1,
+.nav.nav-vertical .nav-item {
+  display: block;
+}
+
+.nav.nav-vertical .nav-depth-1 [class*=nav-depth-] {
+  position: relative;
+  visibility: visible;
+  background-color: transparent;
+}
+
+.nav.nav-vertical .nav-depth-1 > .nav-item + .nav-item {
+  margin-left: auto;
+}
+
+.nav.nav-vertical .nav-depth-2 [class*=nav-depth-] {
+  left: auto;
 }
 
 .is-hidden {

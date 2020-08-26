@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 // 버전
-$version: 1.0.7;
+$version: 1.0.8;
 
 // 웹사이트 기본 단위 설정
 $unit: 'rem'; // default: rem (px|rem)
@@ -88,17 +88,17 @@ $grays: map-merge(
 );
 
 // 기본 색상 설정
-$blue:    #179bfc !default; //default: #179bfc
-$indigo:  #353575 !default; //default: #1a1448
-$purple:  #7e5cdf !default; //default: #7e5cdf
-$pink:    #ee5555 !default; //default: #ea4c89
-$red:     #e4111d !default; //default: #e4111d
-$orange:  #ff5a2d !default; //default: #ff5a2d
-$yellow:  #fec001 !default; //default: #fec001
-$green:   #46b266 !default; //default: #46b266
-$teal:    #33cabb !default; //default: #33cabb
-$cyan:    #17a2b8 !default; //default: #17a2b8
-$darknavy:#1e3142 !default; //default: #1e3142
+$blue:     #179bfc !default; //default: #179bfc
+$indigo:   #353575 !default; //default: #1a1448
+$purple:   #7e5cdf !default; //default: #7e5cdf
+$pink:     #ee5555 !default; //default: #ea4c89
+$red:      #e4111d !default; //default: #e4111d
+$orange:   #ff5a2d !default; //default: #ff5a2d
+$yellow:   #fec001 !default; //default: #fec001
+$green:    #46b266 !default; //default: #46b266
+$teal:     #33cabb !default; //default: #33cabb
+$cyan:     #17a2b8 !default; //default: #17a2b8
+$darknavy: #1e3142 !default; //default: #1e3142
 
 $colors: () !default;
 $colors: map-merge(
@@ -112,10 +112,10 @@ $colors: map-merge(
     "yellow":    $yellow,   //default: $yellow
     "green":     $green,    //default: $green
     "teal":      $teal,     //default: $teal
-		"cyan":      $cyan,     //default: $cyan
-		"darknavy":  $darknavy, //default: $darknavy
-		"white":     $white,    //default: $white
-		"lightgray": $gray-200, //default: $gray-200
+    "cyan":      $cyan,     //default: $cyan
+    "darknavy":  $darknavy, //default: $darknavy
+    "white":     $white,    //default: $white
+    "lightgray": $gray-200, //default: $gray-200
     "gray":      $gray-500, //default: $gray-500
     "darkgray":  $gray-800  //default: $gray-800
   ),
@@ -185,13 +185,13 @@ $grid-columns : 12; // default: 12
 //-- 그리드 컬럼간 여백
 $grid-gutter-width: 30px; // default: 30px
 $grid-breakpoints: (
-	xxxs:	0,     // default: 0
-	xxs:	360px, // default: 360px
-	xs:		480px, // default: 480px
-	sm:		576px, // default: 576px
-	md:		768px, // default: 768px
-	lg:		992px, // default: 992px
-	xl:		1200px // default: 1200px
+  xxxs: 0,     // default: 0
+  xxs:  360px, // default: 360px
+  xs:   480px, // default: 480px
+  sm:   576px, // default: 576px
+  md:   768px, // default: 768px
+  lg:   992px, // default: 992px
+  xl:   1200px // default: 1200px
 ) !default;
 
 
@@ -203,29 +203,30 @@ $enable-responsive-container-classes: false !default; //default: false (true|fal
 //-- 컨테이너 여백
 $container-gutter-width: 15px; // default: 15px
 $container-max-widths: (
-	xxs:	320px, // default: 320px
-	xs:		460px, // default: 460px
-	sm:		540px, // default: 540px
-	md:		720px, // default: 720px
-	lg:		960px, // default: 960px
-	xl:		1140px // default: 1140px
+  xxs: 320px, // default: 320px
+  xs:  460px, // default: 460px
+  sm:  540px, // default: 540px
+  md:  720px, // default: 720px
+  lg:  960px, // default: 960px
+  xl:  1140px // default: 1140px
 );
 
 
 // z-index 설정
-$zindex-select:         890  !default; // default: 890
-$zindex-gnb:   			    900  !default; // default: 900
-$zindex-lnb:   			    900  !default; // default: 900
-$zindex-header:   	    990  !default; // default: 900
-$zindex-footer:   	    970  !default; // default: 900
+$zindex-select:         1000 !default; // default: 1000
 $zindex-dropdown:       1000 !default; // default: 1000
 $zindex-sticky:         1020 !default; // default: 1020
 $zindex-fixed:          1030 !default; // default: 1030
+$zindex-nav:            1030 !default; // default: 1030
+$zindex-gnb:            1030 !default; // default: 1030
+$zindex-lnb:            1030 !default; // default: 1030
+$zindex-header:         1030 !default; // default: 1030
+$zindex-footer:         1030 !default; // default: 1030
 $zindex-modal-backdrop: 1040 !default; // default: 1040
 $zindex-modal:          1050 !default; // default: 1050
 $zindex-popover:        1060 !default; // default: 1060
 $zindex-tooltip:        1070 !default; // default: 1070
-$zindex-skip:		        1080 !default; // default: 1080
+$zindex-skip:           1080 !default; // default: 1080
 
 
 // 스페이싱 설정

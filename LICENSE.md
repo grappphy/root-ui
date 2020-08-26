@@ -50,7 +50,7 @@ Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
 
 ### 시맨틱 UI(Semantic UI)<br> https://semantic-ui.com
 
-**`일부 JS 코드는 시맨틱 UI v2.4.2 문법과 메서드를 사용하였습니다.`**  
+**`일부 JS 코드는 시맨틱 UI v2.4.2 코드 스타일과 메서드를 사용하였습니다.`**  
 
 >Semantic UI - 2.4.1  
 https://github.com/Semantic-Org/Semantic-UI  

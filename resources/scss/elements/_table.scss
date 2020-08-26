@@ -1,61 +1,61 @@
 @charset "utf-8";
 
 * + .table {
-	margin-top: rem(15);
+  margin-top: rem(15);
 }
 
 .table {
-	table {
-		width: 100%;
-		border-top: 1px solid $gray-400;
-		border-bottom: 1px solid $gray-400;
-		border-spacing: 0;
-	}
+  table {
+    width: 100%;
+    border-top: 1px solid $gray-400;
+    border-bottom: 1px solid $gray-400;
+    border-spacing: 0;
+  }
 
-	caption {
+  caption {
     margin-bottom: 1em;
     text-align: left;
-		font-weight: 600;
-	}
-	
-	th,
-	td {
+    font-weight: 600;
+  }
+  
+  th,
+  td {
     padding: rem(15);
     border-top: 1px solid $table-border-color;
-	}
-	
-	th {
-		font-weight: 600;
-	}
+  }
+  
+  th {
+    font-weight: 600;
+  }
 
-	thead {
-		th {
-			background-color: $thead-th-bg-color;
-		}
-		
-		td {
-			background-color: $thead-td-bg-color;
-		}
-	}
-	
-	tbody {
-		th {
-			background-color: $tbody-th-bg-color;
-		}
-		
-		td {
-			background-color: $tbody-td-bg-color;
-		}
+  thead {
+    th {
+      background-color: $thead-th-bg-color;
+    }
+    
+    td {
+      background-color: $thead-td-bg-color;
+    }
+  }
+  
+  tbody {
+    th {
+      background-color: $tbody-th-bg-color;
+    }
+    
+    td {
+      background-color: $tbody-td-bg-color;
+    }
   }
   
   tfoot {
     th {
-			background-color: $tfoot-th-bg-color;
-		}
-		
-		td {
-			background-color: $tfoot-td-bg-color;
-		}
+      background-color: $tfoot-th-bg-color;
+    }
+    
+    td {
+      background-color: $tfoot-td-bg-color;
+    }
   }
 }
 

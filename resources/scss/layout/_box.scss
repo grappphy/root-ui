@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 * + [class*=-box] {
-	margin-top: $spacer;
+  margin-top: $spacer;
 }
 
 *.is-blind + [class*=-box],
@@ -9,17 +9,17 @@
 .row-box > .right-box,
 .btn-box > .right-box,
 .hidden-box {
-	margin-top: 0;
+  margin-top: 0;
 }
 
 .row-box {
-	@include clearfix();
+  @include clearfix();
 }
 
 .row-box > .left-box {
-	float: left;
+  float: left;
 }
 
 .row-box > .right-box {
-	float: right;
+  float: right;
 }

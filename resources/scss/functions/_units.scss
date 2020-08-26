@@ -11,11 +11,11 @@
       $space: '';
     }
 
-		@if $value == 0 {
-			$rem: $rem + 0 + $space;
+    @if $value == 0 {
+      $rem: $rem + 0 + $space;
     }
     @else if $value == auto {
-			$rem: $rem + auto + $space;
+      $rem: $rem + auto + $space;
     }
     @else if type-of($value) == number {
       @if($unit == 'rem') {
@@ -24,8 +24,8 @@
       @else {
         $rem: $rem + $value + px + $space;
       }
-		}
+    }
   }
-	
-	@return $rem;
+  
+  @return $rem;
 }

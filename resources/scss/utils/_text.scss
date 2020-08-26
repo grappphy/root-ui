@@ -1,9 +1,9 @@
 @charset "utf-8";
 
 @each $size, $value in $font-sizes {
-	.txt-#{$size} {
-		font-size: $value !important;
-	}
+  .txt-#{$size} {
+    font-size: $value !important;
+  }
 }
 
 .txt-justify  { text-align: justify !important; }
@@ -11,9 +11,9 @@
 .txt-nowrap   { white-space: nowrap !important; }
 
 .txt-ellipsis {
-	overflow: hidden !important;
-	white-space: nowrap !important;
-	text-overflow: ellipsis !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
 }
 
 @each $breakpoint in map-keys($grid-breakpoints) {
@@ -39,13 +39,13 @@
 }
 
 @each $color, $value in $colors {
-	.txt-#{$color} {
-		color: $value !important;
-	}
+  .txt-#{$color} {
+    color: $value !important;
+  }
 }
 
 @each $color, $value in $theme-colors {
-	.txt-#{$color} {
-		color: $value !important;
-	}
+  .txt-#{$color} {
+    color: $value !important;
+  }
 }
