@@ -1,9 +1,10 @@
 "use strict";
 
 function RootUI() {
-  this.version = '1.0.8';
+  this.version = '1.0.9';
 }
- /* ROOT UI JS는 시맨틱 UI의 문법과 일부 코드를 사용하여 제작되었습니다. */
+
+ /* ROOT UI JS는 시맨틱 UI의 코드 스타일과 일부 코드를 사용하여 제작되었습니다. */
 
  /*
  * # Semantic UI - 2.4.1
@@ -78,7 +79,7 @@ RootUI.prototype.accordion = function() {
           module.set.items();
           module.set.contents();
           module.set.id();
-          module.change(settings.path);
+          if(settings.firstAutoOpen) module.change(settings.path);
           module.remove.initialLoad();
         },
 
@@ -216,14 +217,12 @@ RootUI.prototype.accordion = function() {
           settings.onOpening.call(element);
           module.active.item(target);
           module.active.content(target);
-          settings.onOpen.call(element);
         },
 
         close: function(target) {
           settings.onClosing.call(element);
           module.inactive.item(target);
           module.inactive.content(target);
-          settings.onClose.call(element);
         },
 
         destroy: function() {
@@ -263,6 +262,8 @@ RootUI.prototype.accordion = function() {
               .slideDown({
                 duration: duration,
                 easing: settings.easing
+              }, function() {
+                settings.onOpen.call(element);
               })
             ;
           }
@@ -300,6 +301,8 @@ RootUI.prototype.accordion = function() {
                 .slideUp({
                   duration: duration,
                   easing: settings.easing
+                }, function() {
+                  settings.onClose.call(element);
                 })
               ;
             }
@@ -5264,4 +5267,328 @@ RootUI.prototype.scrollLock.settings = {
     dataTarget : 'data-target',
     dataName   : 'data-name',
   }
+};
+
+/* ROOT UI circletimer는 Circle Timer 코드의 일부를 사용하여 제작되었습니다. */
+
+/* Circle Timer https://github.com/abejfehr/circletimer
+
+The MIT License (MIT)
+
+Copyright (c) 2015 Abe Fehr
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. */
+
+RootUI.prototype.circletimer = function() {
+  var
+    $allModules    = $(arguments[0]),
+    $window        = $(window),
+    $body          = $('body'),
+
+    query          = arguments[1],
+    methodValue    = arguments[2],
+    methodInvoked  = (typeof query == 'string'),
+    queryArguments = [].slice.call(arguments, 1),
+    returnedValue
+  ;
+
+  $allModules
+    .each(function() {
+      var
+        settings = ($.isPlainObject(query))
+          ? $.extend(true, {}, RootUI.prototype.circletimer.settings, query)
+          : $.extend({}, RootUI.prototype.circletimer.settings),
+
+        selector        = settings.selector,
+        className       = settings.className,
+        metadata        = settings.metadata,
+        namespace       = settings.namespace,
+        
+        eventNamespace  = '.' + settings.namespace,
+        moduleNamespace = 'module-' + settings.namespace,
+
+        $module         = $(this),
+        instance        = $module.data(moduleNamespace),
+        element         = this,
+
+        timeElapsed,
+        raf,
+
+        $circle,
+
+        module
+      ;
+      
+      module = {
+        initialize: function() {
+          module.instantiate();
+          module.setup();
+          module.bind.events();
+        },
+
+        instantiate: function () {
+          instance = module;
+          $module
+            .data(moduleNamespace, module)
+          ;
+        },
+
+        setup: function() {
+          module.create.circle();
+        },
+
+        destroy: function() {
+
+        },
+
+        invoke: function(query, passedArguments, context) {
+          var
+            object = instance,
+            maxDepth,
+            found,
+            response
+          ;
+
+          passedArguments = passedArguments || queryArguments;
+          context         = element         || context;
+
+          if(typeof query == 'string' && object !== undefined) {
+            query    = query.split(/[\. ]/);
+            maxDepth = query.length - 1;
+
+            $.each(query, function(depth, value) {
+              var camelCaseValue = (depth != maxDepth)
+                ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
+                : query
+              ;
+
+              if($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                object = object[camelCaseValue];
+              }
+              else if(object[camelCaseValue] !== undefined) {
+                found = object[camelCaseValue];
+                return false;
+              }
+              else if($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                object = object[value];
+              }
+              else if(object[value] !== undefined) {
+                found = object[value];
+                return false;
+              }
+              else {
+                return false;
+              }
+            });
+          }
+
+          if ($.isFunction(found)) {
+            response = found.apply(context, passedArguments);
+          }
+          else if(found !== undefined) {
+            response = found;
+          }
+          if($.isArray(returnedValue)) {
+            returnedValue.push(response);
+          }
+          else if(returnedValue !== undefined) {
+            returnedValue = [returnedValue, response];
+          }
+          else if(response !== undefined) {
+            returnedValue = response;
+          }
+          return found;
+        },
+
+        start: function() {
+          var
+            lastTimestamp,
+            step
+          ;
+
+          if((timeElapsed == null) || timeElapsed === settings.timeout) {
+            lastTimestamp = null;
+            timeElapsed = 0;
+          }
+
+          if(raf != null) {
+            window.cancelAnimationFrame(raf);
+          }
+
+          $circle = $(this).find('circle');
+
+          step = function(timestamp) {
+            var
+              direction,
+              offsetValue
+            ;
+
+            if(lastTimestamp != null) {
+              timeElapsed += timestamp - lastTimestamp;
+            }
+
+            lastTimestamp = timestamp;
+            direction     = settings.clockwise ? -1 : 1;
+            offsetValue   = direction * 50 * Math.PI * timeElapsed / settings.timeout;
+
+            if(offsetValue < -157) offsetValue = -157;
+
+            module.set.circleOffset(offsetValue);
+
+            if(timeElapsed < settings.timeout) {
+              module.set.raf(step);
+              settings.onUpdate.call(element, timeElapsed);
+            }
+            else {
+              timeElapsed = settings.timeout;
+              settings.onUpdate.call(element, timeElapsed);
+              settings.onComplete.call(element);
+            }
+          }
+
+          module.set.raf(step);
+        },
+
+        stop: function() {
+          module.remove.raf();
+          module.set.circleOffset(0);
+          timeElapsed = 0;
+
+          settings.onUpdate.call(element, timeElapsed);
+        },
+
+        pause: function() {
+          module.remove.raf();
+        },
+
+        add: function(event, methodValue) {
+          var addend = methodValue;
+
+          if(addend < timeElapsed) {
+            timeElapsed -= addend;
+          }
+          else {
+            timeElapsed = 0;
+          }
+        },
+
+        each: {
+          
+        },
+
+        create: {
+          circle: function() {
+            var
+              circle     = document.createElementNS('http://www.w3.org/2000/svg', 'circle'),
+              svg        = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+            ;
+
+            circle.setAttributeNS(null, 'r', '25%');
+            circle.setAttributeNS(null, 'cx', '50%');
+            circle.setAttributeNS(null, 'cy', '50%');
+            circle.setAttributeNS(null, 'stroke-dasharray', (50 * Math.PI) + '%');
+
+            svg.appendChild(circle);
+
+            $module.append(svg);
+          }
+        },
+
+        is: {
+          
+        },
+
+        should: {
+
+        },
+
+        get: {
+          timeElapsed: function() {
+            return timeElapsed;
+          }
+        },
+
+        set: {
+          raf: function(method) {
+            raf = window.requestAnimationFrame(method);
+          },
+
+          circleOffset: function(value) {
+            $circle.css('stroke-dashoffset', value + '%');
+          }
+        },
+
+        remove: {
+          raf: function() {
+            window.cancelAnimationFrame(raf);
+          },
+        },
+
+        bind: {
+          events: function() {
+            
+          }
+        },
+
+        event: {
+          
+        }
+      }
+      
+      if(methodInvoked) {
+        if(instance === undefined) {
+          module.initialize();
+        }
+        module.invoke(query);
+      }else {
+        if(instance !== undefined) {
+          instance.invoke('destroy');
+        }
+        module.initialize();
+      }
+    })
+  ;
+
+  return (returnedValue !== undefined)
+    ? returnedValue
+    : this
+  ;
+};
+
+RootUI.prototype.circletimer.settings = {
+  name         : 'Circletimer',
+  namespace    : 'circletimer',
+
+  metadata     : {
+
+  },
+
+  selector     : {
+    
+  },
+  
+  className    : {
+    wrapper    : 'circle-timer-wrapper'
+  },
+
+  timeout      : 5000,
+  clockwise    : true,
+  onUpdate     : function() {},
+  onComplete   : function() {}
 };

@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 /*!
-  * ROOT UI v1.0.8 (http://root-ui.com)
+  * ROOT UI v1.0.9 (http://root-ui.com)
   * Copyright 2020 grappphy <grappphy@gmail.com>
   * Licensed under MIT (https://github.com/grappphy/root-ui/LICENSE)
 */
@@ -49,6 +49,7 @@
 @import "elements/textarea";
 @import "elements/select";
 @import "elements/input";
+@import "elements/form";
 @import "elements/list";
 
 //components
@@ -57,19 +58,21 @@
 @import "components/accordion";
 @import "components/circular";
 @import "components/nav";
+@import "components/circletimer";
 
 //styles
 // @import "styles/button";
+// @import "styles/table";
 // @import "styles/checkbox";
 // @import "styles/radio";
-// @import "styles/table";
 
 //utils
-@import "utils/state";
-@import "utils/text";
 @import "utils/display";
+@import "utils/state";
 @import "utils/spacing";
 @import "utils/sizing";
+@import "utils/text";
+@import "utils/verticalalign";
 
 //theme
 @import "theme/common";

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*!
-  * ROOT UI v1.0.8 (http://root-ui.com)
+  * ROOT UI v1.0.9 (http://root-ui.com)
   * Copyright 2020 grappphy <grappphy@gmail.com>
   * Licensed under MIT (https://github.com/grappphy/root-ui/LICENSE)
 */
@@ -1190,7 +1190,8 @@ a.btn {
   height: 10em;
   padding: 1em;
   border: 1px solid #dee2e6;
-  box-sizing: border-box;
+  border-radius: 0;
+  -webkit-appearance: none;
   resize: none;
 }
 
@@ -1431,6 +1432,30 @@ a.btn {
 .input label + input,
 .input label + input + input {
   width: auto;
+}
+
+.form .form-group + .form-group {
+  margin-top: 1rem;
+}
+
+.form .form-label {
+  display: inline-block;
+  vertical-align: middle;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  line-height: 1.4;
+}
+
+.form .form-label + .form-element {
+  margin-left: 1rem;
+}
+
+.form .checkbox,
+.form .radio {
+  padding-top: .5em;
+  padding-bottom: .5em;
 }
 
 .o-list .o-list-title + ol {
@@ -1859,11 +1884,10 @@ a.btn {
 
 .nav .nav-depth-1 [class*=nav-depth-] > .nav-item {
   display: block;
-  padding: 0.5rem 1rem;
 }
 
 .nav .nav-depth-2 .nav-link {
-  padding: 0.5rem 1rem;
+  padding: 1rem 2rem;
 }
 
 .nav .nav-depth-2 [class*=nav-depth-] {
@@ -1904,279 +1928,23 @@ a.btn {
   left: auto;
 }
 
-.is-hidden {
-  display: none !important;
+.circletimer {
+  position: relative;
+  height: 20rem;
+  width: 20rem;
 }
 
-.is-blind {
-  position: absolute !important;
-  overflow: hidden !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  clip: rect(0 0 0 0) !important;
-  border: 0 !important;
+.circletimer svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
 }
 
-.is-lock {
-  overflow: hidden !important;
-}
-
-.is-fixed {
-  position: fixed !important;
-  width: 100% !important;
-}
-
-.txt-mini {
-  font-size: 1.1rem !important;
-}
-
-.txt-tiny {
-  font-size: 1.2rem !important;
-}
-
-.txt-small {
-  font-size: 1.4rem !important;
-}
-
-.txt-medium {
-  font-size: 1.6rem !important;
-}
-
-.txt-large {
-  font-size: 1.8rem !important;
-}
-
-.txt-big {
-  font-size: 2rem !important;
-}
-
-.txt-huge {
-  font-size: 2.4rem !important;
-}
-
-.txt-massive {
-  font-size: 2.8rem !important;
-}
-
-.txt-justify {
-  text-align: justify !important;
-}
-
-.txt-wrap {
-  white-space: normal !important;
-}
-
-.txt-nowrap {
-  white-space: nowrap !important;
-}
-
-.txt-ellipsis {
-  overflow: hidden !important;
-  white-space: nowrap !important;
-  text-overflow: ellipsis !important;
-}
-
-.txt-left {
-  text-align: left !important;
-}
-
-.txt-right {
-  text-align: right !important;
-}
-
-.txt-center {
-  text-align: center !important;
-}
-
-@media (min-width: 360px) {
-  .txt-xxs-left {
-    text-align: left !important;
-  }
-  .txt-xxs-right {
-    text-align: right !important;
-  }
-  .txt-xxs-center {
-    text-align: center !important;
-  }
-}
-
-@media (min-width: 480px) {
-  .txt-xs-left {
-    text-align: left !important;
-  }
-  .txt-xs-right {
-    text-align: right !important;
-  }
-  .txt-xs-center {
-    text-align: center !important;
-  }
-}
-
-@media (min-width: 576px) {
-  .txt-sm-left {
-    text-align: left !important;
-  }
-  .txt-sm-right {
-    text-align: right !important;
-  }
-  .txt-sm-center {
-    text-align: center !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .txt-md-left {
-    text-align: left !important;
-  }
-  .txt-md-right {
-    text-align: right !important;
-  }
-  .txt-md-center {
-    text-align: center !important;
-  }
-}
-
-@media (min-width: 992px) {
-  .txt-lg-left {
-    text-align: left !important;
-  }
-  .txt-lg-right {
-    text-align: right !important;
-  }
-  .txt-lg-center {
-    text-align: center !important;
-  }
-}
-
-@media (min-width: 1200px) {
-  .txt-xl-left {
-    text-align: left !important;
-  }
-  .txt-xl-right {
-    text-align: right !important;
-  }
-  .txt-xl-center {
-    text-align: center !important;
-  }
-}
-
-.txt-lowercase {
-  text-transform: lowercase !important;
-}
-
-.txt-uppercase {
-  text-transform: uppercase !important;
-}
-
-.txt-capitalize {
-  text-transform: capitalize !important;
-}
-
-.txt-underline {
-  text-decoration: underline !important;
-}
-
-.txt-decoration-none {
-  text-decoration: none !important;
-}
-
-.txt-break {
-  word-break: break-word !important;
-  overflow-wrap: break-word !important;
-}
-
-.txt-blue {
-  color: #179bfc !important;
-}
-
-.txt-indigo {
-  color: #353575 !important;
-}
-
-.txt-purple {
-  color: #7e5cdf !important;
-}
-
-.txt-pink {
-  color: #ee5555 !important;
-}
-
-.txt-red {
-  color: #e4111d !important;
-}
-
-.txt-orange {
-  color: #ff5a2d !important;
-}
-
-.txt-yellow {
-  color: #fec001 !important;
-}
-
-.txt-green {
-  color: #46b266 !important;
-}
-
-.txt-teal {
-  color: #33cabb !important;
-}
-
-.txt-cyan {
-  color: #17a2b8 !important;
-}
-
-.txt-darknavy {
-  color: #1e3142 !important;
-}
-
-.txt-white {
-  color: #fff !important;
-}
-
-.txt-lightgray {
-  color: #e9ecef !important;
-}
-
-.txt-gray {
-  color: #adb5bd !important;
-}
-
-.txt-darkgray {
-  color: #343a40 !important;
-}
-
-.txt-primary {
-  color: #353575 !important;
-}
-
-.txt-secondary {
-  color: #ee5555 !important;
-}
-
-.txt-success {
-  color: #46b266 !important;
-}
-
-.txt-info {
-  color: #17a2b8 !important;
-}
-
-.txt-warning {
-  color: #fec001 !important;
-}
-
-.txt-danger {
-  color: #e4111d !important;
-}
-
-.txt-light {
-  color: #e9ecef !important;
-}
-
-.txt-dark {
-  color: #343a40 !important;
+.circletimer circle {
+  fill: none;
+  stroke: #353575;
+  stroke-dashoffset: 0;
+  stroke-width: 50%;
 }
 
 .d-none {
@@ -2393,6 +2161,30 @@ a.btn {
   .d-xl-inline-flex {
     display: inline-flex !important;
   }
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+.is-blind {
+  position: absolute !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  clip: rect(0 0 0 0) !important;
+  border: 0 !important;
+}
+
+.is-lock {
+  overflow: hidden !important;
+}
+
+.is-fixed {
+  position: fixed !important;
+  width: 100% !important;
 }
 
 .m-0 {
@@ -8913,6 +8705,281 @@ a.btn {
 
 .h-100p {
   height: 100% !important;
+}
+
+.txt-mini {
+  font-size: 1.1rem !important;
+}
+
+.txt-tiny {
+  font-size: 1.2rem !important;
+}
+
+.txt-small {
+  font-size: 1.4rem !important;
+}
+
+.txt-medium {
+  font-size: 1.6rem !important;
+}
+
+.txt-large {
+  font-size: 1.8rem !important;
+}
+
+.txt-big {
+  font-size: 2rem !important;
+}
+
+.txt-huge {
+  font-size: 2.4rem !important;
+}
+
+.txt-massive {
+  font-size: 2.8rem !important;
+}
+
+.txt-justify {
+  text-align: justify !important;
+}
+
+.txt-wrap {
+  white-space: normal !important;
+}
+
+.txt-nowrap {
+  white-space: nowrap !important;
+}
+
+.txt-ellipsis {
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+
+.txt-left {
+  text-align: left !important;
+}
+
+.txt-right {
+  text-align: right !important;
+}
+
+.txt-center {
+  text-align: center !important;
+}
+
+@media (min-width: 360px) {
+  .txt-xxs-left {
+    text-align: left !important;
+  }
+  .txt-xxs-right {
+    text-align: right !important;
+  }
+  .txt-xxs-center {
+    text-align: center !important;
+  }
+}
+
+@media (min-width: 480px) {
+  .txt-xs-left {
+    text-align: left !important;
+  }
+  .txt-xs-right {
+    text-align: right !important;
+  }
+  .txt-xs-center {
+    text-align: center !important;
+  }
+}
+
+@media (min-width: 576px) {
+  .txt-sm-left {
+    text-align: left !important;
+  }
+  .txt-sm-right {
+    text-align: right !important;
+  }
+  .txt-sm-center {
+    text-align: center !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .txt-md-left {
+    text-align: left !important;
+  }
+  .txt-md-right {
+    text-align: right !important;
+  }
+  .txt-md-center {
+    text-align: center !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .txt-lg-left {
+    text-align: left !important;
+  }
+  .txt-lg-right {
+    text-align: right !important;
+  }
+  .txt-lg-center {
+    text-align: center !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .txt-xl-left {
+    text-align: left !important;
+  }
+  .txt-xl-right {
+    text-align: right !important;
+  }
+  .txt-xl-center {
+    text-align: center !important;
+  }
+}
+
+.txt-lowercase {
+  text-transform: lowercase !important;
+}
+
+.txt-uppercase {
+  text-transform: uppercase !important;
+}
+
+.txt-capitalize {
+  text-transform: capitalize !important;
+}
+
+.txt-underline {
+  text-decoration: underline !important;
+}
+
+.txt-decoration-none {
+  text-decoration: none !important;
+}
+
+.txt-break {
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+.txt-blue {
+  color: #179bfc !important;
+}
+
+.txt-indigo {
+  color: #353575 !important;
+}
+
+.txt-purple {
+  color: #7e5cdf !important;
+}
+
+.txt-pink {
+  color: #ee5555 !important;
+}
+
+.txt-red {
+  color: #e4111d !important;
+}
+
+.txt-orange {
+  color: #ff5a2d !important;
+}
+
+.txt-yellow {
+  color: #fec001 !important;
+}
+
+.txt-green {
+  color: #46b266 !important;
+}
+
+.txt-teal {
+  color: #33cabb !important;
+}
+
+.txt-cyan {
+  color: #17a2b8 !important;
+}
+
+.txt-darknavy {
+  color: #1e3142 !important;
+}
+
+.txt-white {
+  color: #fff !important;
+}
+
+.txt-lightgray {
+  color: #e9ecef !important;
+}
+
+.txt-gray {
+  color: #adb5bd !important;
+}
+
+.txt-darkgray {
+  color: #343a40 !important;
+}
+
+.txt-primary {
+  color: #353575 !important;
+}
+
+.txt-secondary {
+  color: #ee5555 !important;
+}
+
+.txt-success {
+  color: #46b266 !important;
+}
+
+.txt-info {
+  color: #17a2b8 !important;
+}
+
+.txt-warning {
+  color: #fec001 !important;
+}
+
+.txt-danger {
+  color: #e4111d !important;
+}
+
+.txt-light {
+  color: #e9ecef !important;
+}
+
+.txt-dark {
+  color: #343a40 !important;
+}
+
+.va-baseline {
+  vertical-align: baseline !important;
+}
+
+.va-top {
+  vertical-align: top !important;
+}
+
+.va-middle {
+  vertical-align: middle !important;
+}
+
+.va-bottom {
+  vertical-align: bottom !important;
+}
+
+.va-text-top {
+  vertical-align: text-top !important;
+}
+
+.va-text-bottom {
+  vertical-align: text-bottom !important;
 }
 
 #skip {

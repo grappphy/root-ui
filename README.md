@@ -1,6 +1,6 @@
 <p align="center">
   <a href="http://root-ui.com">
-    <img src="http://root-ui.com/resources/images/logo/logo_default.png" alt="ROOT UI logo" width="160">
+    <img src="http://root-ui.com/resources/images/logo/logo_default.png" alt="ROOT UI Logo" width="160">
   </a>
 </p>
 
